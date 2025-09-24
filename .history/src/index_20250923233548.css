@@ -97,6 +97,15 @@ body {
         object-fit: contain;
         display: block;
     }
+    .book:hover {
+        box-shadow: 0 2px 10px rgb(0 0 0 / 0.12);
+    }
+
+    .book--selected {
+        border-color: var(--dark-purple);
+        background: var(--light-purple);
+        box-shadow: 0 4px 18px rgb(0 0 0 / 0.18);
+    }
     .price {
         margin: 0;
         text-align: center;
@@ -123,11 +132,6 @@ body {
     .remove-btn:hover {
         background: darkred;
     }
-}
-
-.book--selected {
-    background: var(--dark-beige);
-    box-shadow: 0 4px 18px rgb(0 0 0 / 0.18);
 }
 
 .info-container {

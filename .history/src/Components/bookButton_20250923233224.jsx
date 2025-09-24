@@ -1,42 +1,50 @@
 import BookInfo from "./BookInfo";
 
-function Book(props) {
+export default function Book({
+    id,
+    cover,
+    title,
+    price,
+    url,
+    selected,
+    onSelect,
+    onRemove,
+}) {
     return (
         <div
-            className={`book ${props.selected ? "book--selected" : ""}`}
-            onClick={props.onSelect}
+            className={`book ${selected ? "book--selected" : ""}`}
+            onClick={onSelect}
             role='button'
             tabIndex={0}
             onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    props.onSelect();
+                    onSelect();
                 }
             }}
-            aria-pressed={props.selected}
-            aria-label={`Select ${props.title}`}
+            aria-pressed={selected}
+            aria-label={`Select ${title}`}
         >
             <span
                 className='remove-btn'
                 onClick={(e) => {
                     e.stopPropagation();
-                    props.onRemove(props.id);
+                    onRemove(id);
                 }}
             >
                 ×
             </span>
+
             <img
                 className='book-image'
-                src={props.cover}
-                alt={props.alt}
+                src={cover}
+                alt={title}
             />
-
-            <p className='price'>{props.price}</p>
+            <p className='price'>{price}</p>
 
             <div onClick={(e) => e.stopPropagation()}>
-                <BookInfo url={props.url} />
+                <BookInfo url={url} />
             </div>
         </div>
     );
 }
-export default Book;

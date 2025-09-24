@@ -1,28 +1,14 @@
-import { useState } from "react";
-import initialBooks from "../data/books.json"; // ← rename the import
+import React, { useState } from "react";
+import books from "../data/books.json";
 import NewButton from "./Components/newButton";
 import Book from "./Components/bookButton";
 
-export default function App() {
+function App() {
+    const [count, setCount] = useState(0);
     const [items, setItems] = useState(initialBooks);
-    const [selectedIds, setSelectedIds] = useState(() => new Set());
-
-    const toggleSelect = (id) => {
-        setSelectedIds((prev) => {
-            const next = new Set(prev);
-            next.has(id) ? next.delete(id) : next.add(id);
-            return next;
-        });
-    };
-
+    const [selectedId, setSelectedId] = useState(null);
     const removeBook = (id) => {
-        setItems((prev) => prev.filter((b) => (b.isbn13 ?? b.id) !== id));
-        setSelectedIds((prev) => {
-            if (!prev.has(id)) return prev;
-            const next = new Set(prev);
-            next.delete(id);
-            return next;
-        });
+        setBooks((prev) => prev.filter((b) => (b.isbn13 ?? b.id) !== id));
     };
 
     return (
@@ -36,18 +22,13 @@ export default function App() {
                     <div className='add-col'>
                         <NewButton className='add' />
                     </div>
-
-                    {items.map((b) => (
+                    {books.map((b) => (
                         <Book
                             key={b.isbn13}
-                            id={b.isbn13}
                             cover={b.image}
                             title={b.title}
                             price={b.price}
                             url={b.url}
-                            selected={selectedIds.has(b.isbn13)}
-                            onSelect={() => toggleSelect(b.isbn13)}
-                            onRemove={() => removeBook(b.isbn13)}
                         />
                     ))}
                 </div>
@@ -59,3 +40,5 @@ export default function App() {
         </div>
     );
 }
+
+export default App;

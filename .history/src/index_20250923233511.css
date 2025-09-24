@@ -105,6 +105,11 @@ body {
         place-items: center;
     }
 
+    .book--selected {
+        border-color: var(--dark-purple);
+        background: var(--light-purple);
+        box-shadow: 0 4px 18px rgb(0 0 0 / 0.18);
+    }
     /* remove button styling */
     .remove-btn {
         position: absolute;
@@ -123,11 +128,6 @@ body {
     .remove-btn:hover {
         background: darkred;
     }
-}
-
-.book--selected {
-    background: var(--dark-beige);
-    box-shadow: 0 4px 18px rgb(0 0 0 / 0.18);
 }
 
 .info-container {

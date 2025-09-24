@@ -45,7 +45,7 @@ export default function App() {
                             title={b.title}
                             price={b.price}
                             url={b.url}
-                            selected={selectedIds.has(b.isbn13)}
+                            selected={selectedId === b.isbn13}
                             onSelect={() => toggleSelect(b.isbn13)}
                             onRemove={() => removeBook(b.isbn13)}
                         />

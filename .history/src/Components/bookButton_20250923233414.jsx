@@ -1,6 +1,12 @@
 import BookInfo from "./BookInfo";
 
 function Book(props) {
+    function remove(e) {
+        if (e.target.tagName !== "SPAN") {
+            return;
+        }
+        e.currentTarget.remove();
+    }
     return (
         <div
             className={`book ${props.selected ? "book--selected" : ""}`}
@@ -33,6 +39,7 @@ function Book(props) {
 
             <p className='price'>{props.price}</p>
 
+            {/* Clicking the link shouldn’t toggle selection */}
             <div onClick={(e) => e.stopPropagation()}>
                 <BookInfo url={props.url} />
             </div>

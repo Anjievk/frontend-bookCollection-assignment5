@@ -126,7 +126,8 @@ body {
 }
 
 .book--selected {
-    background: var(--dark-beige);
+    border-color: var(--dark-purple);
+    background: var(--light-purple);
     box-shadow: 0 4px 18px rgb(0 0 0 / 0.18);
 }
 

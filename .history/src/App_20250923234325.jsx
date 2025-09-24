@@ -4,7 +4,7 @@ import NewButton from "./Components/newButton";
 import Book from "./Components/bookButton";
 
 export default function App() {
-    const [items, setItems] = useState(initialBooks);
+    const [items, setItems] = useState(initialBooks); // ← state name is items
     const [selectedIds, setSelectedIds] = useState(() => new Set());
 
     const toggleSelect = (id) => {
@@ -14,7 +14,6 @@ export default function App() {
             return next;
         });
     };
-
     const removeBook = (id) => {
         setItems((prev) => prev.filter((b) => (b.isbn13 ?? b.id) !== id));
         setSelectedIds((prev) => {
@@ -45,7 +44,7 @@ export default function App() {
                             title={b.title}
                             price={b.price}
                             url={b.url}
-                            selected={selectedIds.has(b.isbn13)}
+                            selected={selectedId === b.isbn13}
                             onSelect={() => toggleSelect(b.isbn13)}
                             onRemove={() => removeBook(b.isbn13)}
                         />

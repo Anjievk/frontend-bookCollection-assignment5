@@ -1,6 +1,12 @@
 import BookInfo from "./BookInfo";
 
 function Book(props) {
+    function remove(e) {
+        if (e.target.tagName !== "SPAN") {
+            return;
+        }
+        e.currentTarget.remove();
+    }
     return (
         <div
             className={`book ${props.selected ? "book--selected" : ""}`}
