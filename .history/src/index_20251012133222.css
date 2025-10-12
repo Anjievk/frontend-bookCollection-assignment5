@@ -232,12 +232,6 @@ body {
         grid-column: 2;
         max-width: 35vw;
     }
-    .btn-delete,
-    .btn-edit {
-        width: 90px;
-        height: 40px;
-        font-size: 1.25rem;
-    }
 }
 
 @media (max-width: 560px) {

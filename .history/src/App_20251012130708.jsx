@@ -4,7 +4,7 @@ import Book from "./Components/bookButton";
 
 export default function App() {
     const [books, setBooks] = useState([]);
-    const [selectedBookIds, setSelectedBookIds] = useState([]);
+    const [selectedBookId, setSelectedBookId] = useState([]);
 
     return (
         <div>
@@ -18,15 +18,15 @@ export default function App() {
                         <NewButton
                             books={books}
                             setBooks={setBooks}
-                            selectedBookIds={selectedBookIds}
+                            selectedBookId={selectedBookId}
                         />
                     </div>{" "}
                     {books.map((book) => (
                         <Book
                             key={book.id}
                             book={book}
-                            setSelectedBookIds={setSelectedBookIds}
-                            selectedBookIds={selectedBookIds}
+                            setSelectedBookId={setSelectedBookId}
+                            selectedBookId={selectedBookId}
                         />
                     ))}
                 </div>

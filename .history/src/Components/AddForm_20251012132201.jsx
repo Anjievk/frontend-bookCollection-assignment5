@@ -73,7 +73,6 @@ function AddForm({ addBook, closeModal }) {
                     <input
                         type='url'
                         name='image'
-                        required
                     />
                 </div>
 

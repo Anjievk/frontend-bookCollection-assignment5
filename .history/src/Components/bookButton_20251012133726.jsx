@@ -6,8 +6,10 @@ function Book({ book, setSelectedBookIds, selectedBookIds }) {
     function handleClick() {
         setSelectedBookIds((prevSelected) => {
             if (prevSelected.includes(book.id)) {
+                // Clicking the selected book deselects it
                 return [];
             } else {
+                // Select only this book (replace any existing selection)
                 return [book.id];
             }
         });

@@ -6,9 +6,11 @@ function Book({ book, setSelectedBookIds, selectedBookIds }) {
     function handleClick() {
         setSelectedBookIds((prevSelected) => {
             if (prevSelected.includes(book.id)) {
-                return [];
+                // Deselect - remove from array
+                return prevSelected.filter((id) => id !== book.id);
             } else {
-                return [book.id];
+                // Select - add to array
+                return [...prevSelected, book.id];
             }
         });
     }
@@ -25,6 +27,10 @@ function Book({ book, setSelectedBookIds, selectedBookIds }) {
             />
 
             <p className='author'>By {book.author}</p>
+
+            {/* <div onClick={(e) => e.stopPropagation()}>
+                <BookInfo url={props.url} />
+            </div> */}
         </div>
     );
 }

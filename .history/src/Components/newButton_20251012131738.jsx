@@ -3,10 +3,10 @@ import AddForm from "./AddForm";
 
 function NewButton({ books, setBooks, selectedBookIds }) {
     function deleteBook() {
-        const newBooks = books.filter(
-            (book) => !selectedBookIds.includes(book.id)
-        );
-        setBooks(newBooks);
+        if (selectedBookIds) {
+            const newBooks = books.filter((b) => b.id !== selectedBookIds);
+            setBooks([...newBooks]);
+        }
     }
 
     function handleAddBook(newBook) {

@@ -71,12 +71,10 @@ body {
 /* Start Edit and Delete Button */
 .btn-edit,
 .btn-delete {
-    width: 115px;
-    height: 50px;
+    padding: 6px 12px;
     font-size: 1.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 20px;
     &:hover {
         opacity: 0.8;
     }
@@ -85,14 +83,15 @@ body {
 .btn-edit {
     background-color: var(--dark-purple);
     color: var(--white);
-    border: 3px solid var(--light-purple);
+    border: 3px solid var(--dark-purple);
+    margin-bottom: 12px;
 }
 
 .btn-delete {
     background-color: rgb(255, 116, 116);
-    color: var(--black);
-    border: 3px solid rgb(0, 0, 0);
-    margin-left: 20px;
+    color: var(--white);
+    border: 3px solid darkred;
+    margin-top: 12px;
 }
 
 /* Start Book Content style */
@@ -232,12 +231,6 @@ body {
         grid-column: 2;
         max-width: 35vw;
     }
-    .btn-delete,
-    .btn-edit {
-        width: 90px;
-        height: 40px;
-        font-size: 1.25rem;
-    }
 }
 
 @media (max-width: 560px) {
@@ -253,12 +246,6 @@ body {
     }
     .book .book-image {
         height: 250px;
-    }
-    .btn-delete,
-    .btn-edit {
-        width: 90px;
-        height: 40px;
-        font-size: 1.25rem;
     }
 }
 
