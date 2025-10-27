@@ -391,6 +391,7 @@ dialog {
     max-width: none;
     padding: 0;
     overflow: hidden;
+    /* Center the dialog on the screen */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
