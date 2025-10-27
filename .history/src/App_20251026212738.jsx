@@ -108,12 +108,12 @@ export default function App() {
             </header>
 
             <main>
-                <Filter
-                    authors={authors}
-                    onFilterChange={setFilterAuthor}
-                    currentFilter={filterAuthor}
-                />
                 <div className='app-content'>
+                    <Filter
+                        authors={authors}
+                        onFilterChange={setFilterAuthor}
+                        currentFilter={filterAuthor}
+                    />
                     <div className='add-col'>
                         <NewButton
                             onAddBook={handleAddBook}

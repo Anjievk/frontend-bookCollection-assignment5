@@ -1,7 +1,7 @@
-function Book({ data, onSelect, isSelected }) {
+function Book({ book, setSelectedBookIds, selectedBookIds }) {
     const handleClick = () => {
-        if (onSelect) {
-            onSelect(data);
+        if (setSelectedBookIds) {
+            setSelectedBookIds(data);
         }
     };
 
@@ -12,11 +12,11 @@ function Book({ data, onSelect, isSelected }) {
         >
             <img
                 className='book-image'
-                src={data.image}
-                alt={data.title}
+                src={book.image}
+                alt={book.title}
             />
 
-            <p className='author'>Author: {data.author}</p>
+            <p className='author'>By {book.author}</p>
         </div>
     );
 }

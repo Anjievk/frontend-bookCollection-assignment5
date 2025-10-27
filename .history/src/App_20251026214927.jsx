@@ -108,12 +108,12 @@ export default function App() {
             </header>
 
             <main>
-                <Filter
-                    authors={authors}
-                    onFilterChange={setFilterAuthor}
-                    currentFilter={filterAuthor}
-                />
                 <div className='app-content'>
+                    <Filter
+                        authors={authors}
+                        onFilterChange={setFilterAuthor}
+                        currentFilter={filterAuthor}
+                    />
                     <div className='add-col'>
                         <NewButton
                             onAddBook={handleAddBook}
@@ -122,7 +122,6 @@ export default function App() {
                             book={selectedBookIds}
                         />
                     </div>{" "}
-                    {filteredBooks.map((book) => getBooks(book))}
                 </div>
             </main>
             <Footer />

@@ -17,40 +17,21 @@ function AddForm({ addBook, book }) {
             url: "#",
         };
 
-        // Add additional properties for new books
-        if (!book) {
-            newBook.url = "#";
-            newBook.isbn13 = nanoid();
-            newBook.selected = false;
-        } else {
-            // For editing, preserve the original book's properties
-            newBook.isbn13 = book.isbn13;
-            newBook.url = book.url;
-            newBook.selected = book.selected;
-        }
-
-        console.log("Calling add function with:", newBook);
         addBook(newBook);
         e.target.reset();
-
-        // Close modal
-        const modal = document.querySelector("dialog[open]");
-        if (modal) {
-            modal.close();
-        }
+        closeModal();
     };
-
     return (
         <div className='form-container'>
             <form onSubmit={handleSubmit}>
-                <h2> {book ? "Edit book" : "Add book"} </h2>
+                <h2>ADD BOOK</h2>
                 <div className='form-control'>
                     <label htmlFor='title'>Title: </label>
                     <input
                         type='text'
                         name='title'
                         placeholder='Book title'
-                        defaultValue={book?.title}
+                        required
                     />
                 </div>
                 <div className='form-control'>
@@ -59,7 +40,7 @@ function AddForm({ addBook, book }) {
                         type='text'
                         name='author'
                         placeholder='Author'
-                        defaultValue={book?.author}
+                        required
                     />
                 </div>
                 <div className='form-control'>
@@ -68,15 +49,13 @@ function AddForm({ addBook, book }) {
                         type='text'
                         name='publisher'
                         placeholder='Publisher'
-                        defaultValue={book?.publisher}
                     />
                 </div>
                 <div className='form-control'>
-                    <label htmlFor='year'>Publication Year: </label>
+                    <label htmlFor='publication-year'>Publication Year: </label>
                     <input
                         type='number'
-                        name='year'
-                        defaultValue={book?.year}
+                        name='publication-year'
                     />
                 </div>
                 <div className='form-control'>
@@ -85,7 +64,6 @@ function AddForm({ addBook, book }) {
                         type='text'
                         name='language'
                         placeholder='Language'
-                        defaultValue={book?.language}
                     />
                 </div>
                 <div className='form-control'>
@@ -93,7 +71,6 @@ function AddForm({ addBook, book }) {
                     <input
                         type='number'
                         name='pages'
-                        defaultValue={book?.pages}
                     />
                 </div>
                 <div className='form-control'>
@@ -101,16 +78,12 @@ function AddForm({ addBook, book }) {
                     <input
                         type='url'
                         name='image'
-                        defaultValue={book?.image}
+                        required
                     />
                 </div>
 
-                <button
-                    className='btn primary'
-                    type='submit'
-                >
-                    {book ? "Update" : "Save"}
-                </button>
+                {/* Buttons */}
+                <button className='btn primary'>Save</button>
             </form>
 
             <img

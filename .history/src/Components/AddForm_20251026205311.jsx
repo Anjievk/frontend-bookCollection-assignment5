@@ -19,18 +19,18 @@ function AddForm({ addBook, book }) {
 
         // Add additional properties for new books
         if (!book) {
-            newBook.url = "#";
-            newBook.isbn13 = nanoid();
-            newBook.selected = false;
+            bookData.url = "#";
+            bookData.isbn13 = nanoid();
+            bookData.selected = false;
         } else {
             // For editing, preserve the original book's properties
-            newBook.isbn13 = book.isbn13;
-            newBook.url = book.url;
-            newBook.selected = book.selected;
+            bookData.isbn13 = book.isbn13;
+            bookData.url = book.url;
+            bookData.selected = book.selected;
         }
 
-        console.log("Calling add function with:", newBook);
-        addBook(newBook);
+        console.log("Calling add function with:", bookData);
+        add(bookData);
         e.target.reset();
 
         // Close modal
@@ -42,8 +42,9 @@ function AddForm({ addBook, book }) {
 
     return (
         <div className='form-container'>
+            <h2> {book ? "Edit book" : "Add book"} </h2>
             <form onSubmit={handleSubmit}>
-                <h2> {book ? "Edit book" : "Add book"} </h2>
+                <h2>ADD BOOK</h2>
                 <div className='form-control'>
                     <label htmlFor='title'>Title: </label>
                     <input
@@ -109,7 +110,7 @@ function AddForm({ addBook, book }) {
                     className='btn primary'
                     type='submit'
                 >
-                    {book ? "Update" : "Save"}
+                    {book ? "Update" : "Submit"}
                 </button>
             </form>
 

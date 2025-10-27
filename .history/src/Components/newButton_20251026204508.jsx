@@ -15,15 +15,16 @@ function NewButton({ book, onDelete, onAddBook, update }) {
                 btnLabel='Edit'
                 btnClassName='btn-edit'
             >
-                <AddForm
+                <BookForm
                     book={book}
-                    addBook={update}
+                    add={update}
                 />
             </Modal>
 
             <button
                 className='btn-delete'
                 onClick={onDelete}
+                disabled={!selectedBookIds}
             >
                 Delete
             </button>

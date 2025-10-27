@@ -19,7 +19,9 @@ function Modal({ btnLabel, btnClassName, children }) {
             >
                 {btnLabel}
             </button>
-            <dialog ref={modalRef}>{children}</dialog>
+            <dialog ref={modalRef}>
+                <div>{React.cloneElement(children, { closeModal })}</div>
+            </dialog>
         </>
     );
 }

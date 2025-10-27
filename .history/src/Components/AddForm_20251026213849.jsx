@@ -42,8 +42,9 @@ function AddForm({ addBook, book }) {
 
     return (
         <div className='form-container'>
+            <h2> {book ? "Edit book" : "Add book"} </h2>
             <form onSubmit={handleSubmit}>
-                <h2> {book ? "Edit book" : "Add book"} </h2>
+                <h2>ADD BOOK</h2>
                 <div className='form-control'>
                     <label htmlFor='title'>Title: </label>
                     <input

@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import NewButton from "./Components/newButton";
 import Book from "./Components/bookButton";
 import Footer from "./Components/footer";
-import Filter from "./Components/Filter/filter";
-import data from "../data/books.json";
 
 export default function App() {
     // Load books from localStorage or use default data
@@ -16,7 +14,7 @@ export default function App() {
             return data;
         }
     });
-    const [selectedBookIds, setSelectedBookIds] = useState(null);
+    const [selectedBook, setSelectedBook] = useState(null);
     const [filterAuthor, setFilterAuthor] = useState("");
 
     // Save books to localStorage whenever books state changes
@@ -30,8 +28,8 @@ export default function App() {
 
     function getBooks(bookData) {
         const isSelected =
-            selectedBookIds &&
-            (selectedBookIds.isbn13 || selectedBookIds.title) ===
+            selectedBook &&
+            (selectedBook.isbn13 || selectedBook.title) ===
                 (bookData.isbn13 || bookData.title);
         return (
             <Book
@@ -46,14 +44,14 @@ export default function App() {
     function handleBookSelection(book) {
         // If clicking the same book that's already selected, unselect it
         if (
-            selectedBookIds &&
-            (selectedBookIds.isbn13 || selectedBookIds.title) ===
+            selectedBook &&
+            (selectedBook.isbn13 || selectedBook.title) ===
                 (book.isbn13 || book.title)
         ) {
-            setSelectedBookIds(null);
+            setSelectedBook(null);
         } else {
             // Otherwise, select the clicked book
-            setSelectedBookIds(book);
+            setSelectedBook(book);
         }
     }
 
@@ -66,19 +64,19 @@ export default function App() {
                     : book
             )
         );
-        setSelectedBookIds(updatedBook);
+        setSelectedBook(updatedBook);
     }
 
     function handleDeleteBook() {
-        if (selectedBookIds) {
+        if (selectedBook) {
             setBooks((prevBooks) =>
                 prevBooks.filter(
                     (book) =>
                         (book.isbn13 || book.title) !==
-                        (selectedBookIds.isbn13 || selectedBookIds.title)
+                        (selectedBook.isbn13 || selectedBook.title)
                 )
             );
-            setSelectedBookIds(null);
+            setSelectedBook(null);
         } else {
             alert("Please select a book to delete");
         }
@@ -108,23 +106,30 @@ export default function App() {
             </header>
 
             <main>
-                <Filter
-                    authors={authors}
-                    onFilterChange={setFilterAuthor}
-                    currentFilter={filterAuthor}
-                />
                 <div className='app-content'>
+                    <Filter
+                        authors={authors}
+                        onFilterChange={setFilterAuthor}
+                        currentFilter={filterAuthor}
+                    />
                     <div className='add-col'>
                         <NewButton
-                            onAddBook={handleAddBook}
-                            update={handleUpdateBook}
-                            onDelete={handleDeleteBook}
-                            book={selectedBookIds}
+                            books={books}
+                            setBooks={setBooks}
+                            selectedBookIds={selectedBook}
                         />
                     </div>{" "}
-                    {filteredBooks.map((book) => getBooks(book))}
+                    {books.map((book) => (
+                        <Book
+                            key={book.id}
+                            book={book}
+                            setSelectedBookIds={setSelectedBookIds}
+                            selectedBookIds={selectedBookIds}
+                        />
+                    ))}
                 </div>
             </main>
+            {/* Moved footer to components */}
             <Footer />
         </div>
     );

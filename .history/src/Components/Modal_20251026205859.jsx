@@ -15,11 +15,13 @@ function Modal({ btnLabel, btnClassName, children }) {
         <>
             <button
                 className={btnClassName}
-                onClick={openModal}
+                onClick={handleClick}
             >
                 {btnLabel}
             </button>
-            <dialog ref={modalRef}>{children}</dialog>
+            <dialog ref={modalRef}>
+                <div>{React.cloneElement(children, { closeModal })}</div>
+            </dialog>
         </>
     );
 }

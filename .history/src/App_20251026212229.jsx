@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import NewButton from "./Components/newButton";
 import Book from "./Components/bookButton";
 import Footer from "./Components/footer";
-import Filter from "./Components/Filter/filter";
-import data from "../data/books.json";
 
 export default function App() {
     // Load books from localStorage or use default data
@@ -108,12 +106,12 @@ export default function App() {
             </header>
 
             <main>
-                <Filter
-                    authors={authors}
-                    onFilterChange={setFilterAuthor}
-                    currentFilter={filterAuthor}
-                />
                 <div className='app-content'>
+                    <Filter
+                        authors={authors}
+                        onFilterChange={setFilterAuthor}
+                        currentFilter={filterAuthor}
+                    />
                     <div className='add-col'>
                         <NewButton
                             onAddBook={handleAddBook}
