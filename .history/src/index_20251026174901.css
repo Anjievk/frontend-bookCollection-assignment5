@@ -11,8 +11,6 @@
 * {
     font-family: "Jersey 10", sans-serif;
     box-sizing: border-box;
-    padding: 0;
-    margin: 0;
 }
 
 img {
@@ -21,8 +19,7 @@ img {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
+    position: relative;
     min-height: 100vh;
     background: linear-gradient(
         343deg,
@@ -241,6 +238,12 @@ body {
         height: 40px;
         font-size: 1.25rem;
     }
+    footer {
+        position: absolute;
+        bottom: 0;
+        margin-top: 40px;
+        width: 100%;
+    }
 }
 
 @media (max-width: 560px) {
@@ -263,11 +266,23 @@ body {
         height: 40px;
         font-size: 1.25rem;
     }
+    footer {
+        position: absolute;
+        bottom: 0;
+        margin-top: 40px;
+        width: 100%;
+    }
+}
+
+main {
+    margin-bottom: 15vh;
 }
 
 /* Start footer style */
 footer {
-    padding-top: 5%;
+    margin-top: 40px;
+    bottom: 0;
+    width: 100%;
     > p {
         width: 100%;
         height: 15vh;

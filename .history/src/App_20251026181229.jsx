@@ -1,7 +1,6 @@
 import { useState } from "react";
 import NewButton from "./Components/newButton";
 import Book from "./Components/bookButton";
-import Footer from "./Components/footer";
 
 export default function App() {
     const [books, setBooks] = useState([]);
@@ -33,7 +32,7 @@ export default function App() {
                 </div>
             </main>
 
-            <Footer />
+            <footer />
         </div>
     );
 }
